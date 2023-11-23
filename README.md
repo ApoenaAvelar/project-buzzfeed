@@ -1,5 +1,7 @@
 # ProjectBuzzfeed
 
+### This project creates a quizz and was buil to eplore some core features of Angular framework.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.8.
 
 ## Development server
