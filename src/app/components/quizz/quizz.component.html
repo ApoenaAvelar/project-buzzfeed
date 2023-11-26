@@ -3,18 +3,20 @@
     <div class="quizz__logo">
         <img class="main__logo" src="assets\images\buzzfeed-logo.png" alt="buzzfeed logo"
          srcset="">
-        <h3>Tittle</h3>
+        <h3>{{title}}</h3>
     </div>
     <div class="quizz__questions">
-        <h3>Picked question</h3>
+        <h3>{{pickedQuestion.question}}</h3>
 
     </div>
     <div class="quizz__options">
-        <button class="btn__options">
-            Option
+        <button *ngFor="let option of pickedQuestion.options"
+        (click)="onOptionClicked(option.alias)"
+        class="btn__options">
+            {{option.name}}
         </button>
     </div>
-    <div class="quizz__results">
+    <div *ngIf = finished class="quizz__results">
             <h1>You are a:</h1>
             <p>Picked answer</p>
     </div>
