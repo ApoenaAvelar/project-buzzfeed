@@ -57,7 +57,7 @@ async nextStep(){
 
         console.log(this.answers)
     }
-  }
+  }//answers count
   async checkResult(answers: string[]) {
     const result = answers.reduce((previous, current, i, arr)=>{
         if (
