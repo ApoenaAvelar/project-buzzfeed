@@ -41,17 +41,36 @@ export class QuizzComponent implements OnInit {
 
   onOptionClicked(value: string) {
     this.answers.push(value)
-    console.log(this.answers)
+    this.nextStep()
 
   }
 
-  async nextStep(){
+async nextStep(){
     this.questionIndex++
     if (this.questionIndex < this.questionMaxIndex) {
         this.pickedQuestion = this.questions[this.questionIndex]
     } else {
+        const finalResult: string = await this.checkResult(this.answers)
         this.finished = true
+        this.pickedAnswer = quizz_questions.results[finalResult as keyof typeof
+            quizz_questions.results]
+
+        console.log(this.answers)
     }
+  }
+  async checkResult(answers: string[]) {
+    const result = answers.reduce((previous, current, i, arr)=>{
+        if (
+            arr.filter(item => item === previous).length >
+            arr.filter(item => item === current).length
+           ) {
+            return previous
+        }else{
+            return current
+        }
+
+    })
+    return result
   }
 
 

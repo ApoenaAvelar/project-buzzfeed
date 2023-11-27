@@ -5,19 +5,21 @@
          srcset="">
         <h3>{{title}}</h3>
     </div>
-    <div class="quizz__questions">
-        <h3>{{pickedQuestion.question}}</h3>
 
+    <div *ngIf=!finished class="quizz__questions">
+        <h3>{{pickedQuestion.question}}</h3>
     </div>
-    <div class="quizz__options">
+
+    <div *ngIf=!finished class="quizz__options">
         <button *ngFor="let option of pickedQuestion.options"
         (click)="onOptionClicked(option.alias)"
         class="btn__options">
             {{option.name}}
         </button>
     </div>
+
     <div *ngIf = finished class="quizz__results">
             <h1>You are a:</h1>
-            <p>Picked answer</p>
+            <p>{{pickedAnswer}}</p>
     </div>
 </div>
